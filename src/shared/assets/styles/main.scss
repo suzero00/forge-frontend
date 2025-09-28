@@ -1,0 +1,21 @@
+@use 'reset';
+@use './variables/variables';
+@use './themes/light';
+@use './themes/dark';
+
+.app {
+  background: var(--bg-color);
+
+  color: var(--primary-color);
+
+  min-height: 100vh;
+}
+
+.app_wrapper {
+  display: flex;
+
+}
+
+.app_content {
+  flex-grow: 1;
+}

@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
+  background: var(--inverted-bg-color);
+
+  .nav {
+    display: flex;
+    gap: 20px;
+  }
+}
