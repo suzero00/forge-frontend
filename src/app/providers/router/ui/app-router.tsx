@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import { useTheme } from '@/shared/hooks/useTheme';
 import { Header } from '@/widgets';
 import { Sidebar } from '@/widgets/sidebar';
+import { Loader } from '@/shared/ui/loader';
+import { NotFoundPage } from '@/pages/not-found';
 
 const MainPage = lazy(() =>
     import('@/pages/main').then((module) => ({ default: module.MainPage })),
@@ -16,20 +18,21 @@ export const AppRouter = () => {
 
     return (
         <div className={`app ${theme}`}>
-            <Suspense fallback={'Loading...'}>
-                <Header />
-                <div className={`app_wrapper`}>
-                    <Sidebar />
-                    <div className={`app_content`}>
+            <Header />
+            <div className={`app_wrapper`}>
+                <Sidebar />
+                <div className={`app_content`}>
+                    <Suspense fallback={<Loader />}>
                         <Routes>
                             <Route path={'/'}>
-                                <Route path={'/'} element={<MainPage />} />
+                                <Route index element={<MainPage />} />
                                 <Route path={'/about'} element={<AboutPage />} />
                             </Route>
+                            <Route path={'*'} element={<NotFoundPage />} />
                         </Routes>
-                    </div>
+                    </Suspense>
                 </div>
-            </Suspense>
+            </div>
         </div>
     );
 };

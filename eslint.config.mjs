@@ -9,7 +9,7 @@ export default defineConfig([
     {
         files: ['**/*.{js,ts,jsx,tsx}'],
         plugins: { js, prettier: pluginPrettier, react: pluginReact },
-        extends: ['js/recommended'],
+        extends: ['js/recommended', 'plugin:i18next/recommended'],
         languageOptions: { globals: globals.browser },
         rules: {
             'object-curly-spacing': ['error', 'always'],
@@ -17,6 +17,7 @@ export default defineConfig([
             'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
             'prettier/prettier': 'error',
             'react/react-in-jsx-scope': 'off',
+            'i18next/no-literal-string': ['error', { markupOnly: true }],
         },
         settings: {
             react: {
